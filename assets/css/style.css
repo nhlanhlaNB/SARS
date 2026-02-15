@@ -30,6 +30,17 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
 }
 
+.hero-video-wrapper {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.hero-video {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
 /* Cards */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -252,6 +263,10 @@ footer a:hover {
     
     .lead {
         font-size: 1.1rem;
+    }
+
+    .hero-video-wrapper {
+        max-width: 100%;
     }
 }
 
