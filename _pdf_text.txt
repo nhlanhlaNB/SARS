@@ -1,0 +1,3 @@
+__EXTRACTION_FAILED__
+pypdf: No module named 'pypdf'
+fitz: No module named 'fitz'
