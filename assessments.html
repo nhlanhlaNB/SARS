@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assessments | SARS AI Training</title>
+    <title>Assessment Form | SARS AI Training</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -19,7 +19,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="day-1.html">Day 1</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="assessments.html">Assessments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScgxORIvti87Dmp4ssuYSbtVlGbW7jDQqF4EMbZysF6njmWOQ/viewform" target="_blank" rel="noopener noreferrer">Assessments</a></li>
                 </ul>
             </div>
         </div>
@@ -28,167 +28,23 @@
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h1 class="display-4 fw-bold">Matric Meter Assessment</h1>
-                <p class="lead text-muted">Baseline Needs Assessment - Day 1</p>
+                <h1 class="display-4 fw-bold">Assessment Form</h1>
+                <p class="lead text-muted">Scan the QR code or open the external Google Form to complete your assessment.</p>
             </div>
 
             <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <form id="assessmentForm" class="assessment-form">
-                        <!-- Section 1: Demographics -->
-                        <div class="assessment-section">
-                            <h4 class="text-primary mb-4"><i class="bi bi-person-badge"></i> Section 1: Information</h4>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label" for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" aria-label="Name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="department">Department/Unit</label>
-                                    <input type="text" class="form-control" id="department" name="department" aria-label="Department/Unit" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="role">Job Role/Title</label>
-                                    <input type="text" class="form-control" id="role" name="role" aria-label="Job Role/Title" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="years">Years at SARS</label>
-                                    <select class="form-select" id="years" name="years" required aria-label="Years at SARS">
-                                        <option value="">Choose...</option>
-                                        <option value="<1">Less than 1 year</option>
-                                        <option value="1-5">1-5 years</option>
-                                        <option value="6-10">6-10 years</option>
-                                        <option value="11-20">11-20 years</option>
-                                        <option value="20+">More than 20 years</option>
-                                    </select>
-                                </div>
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body text-center p-4 p-md-5">
+                            <img src="QRCode Assessment.png" class="img-fluid rounded mb-4" alt="Assessment QR Code" style="max-width: 320px;">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLScgxORIvti87Dmp4ssuYSbtVlGbW7jDQqF4EMbZysF6njmWOQ/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg px-4">
+                                    <i class="bi bi-box-arrow-up-right"></i> Open Assessment Form
+                                </a>
                             </div>
+                            <p class="text-muted mt-3 mb-0">If scanning doesn’t work, use the button above.</p>
                         </div>
-
-                        <!-- Section 2: Knowledge Level -->
-                        <div class="assessment-section">
-                            <h4 class="text-primary mb-4"><i class="bi bi-bar-chart"></i> Section 2: Current AI Knowledge</h4>
-                            <p class="text-muted">Rate your knowledge (1 = No knowledge, 5 = Expert)</p>
-                            
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">General AI concepts</label>
-                                <div class="rating-group">
-                                    <input type="hidden" name="knowledge_ai">
-                                    <div class="rating-option" data-value="1">1</div>
-                                    <div class="rating-option" data-value="2">2</div>
-                                    <div class="rating-option" data-value="3">3</div>
-                                    <div class="rating-option" data-value="4">4</div>
-                                    <div class="rating-option" data-value="5">5</div>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Machine Learning basics</label>
-                                <div class="rating-group">
-                                    <input type="hidden" name="knowledge_ml">
-                                    <div class="rating-option" data-value="1">1</div>
-                                    <div class="rating-option" data-value="2">2</div>
-                                    <div class="rating-option" data-value="3">3</div>
-                                    <div class="rating-option" data-value="4">4</div>
-                                    <div class="rating-option" data-value="5">5</div>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Data analytics</label>
-                                <div class="rating-group">
-                                    <input type="hidden" name="knowledge_analytics">
-                                    <div class="rating-option" data-value="1">1</div>
-                                    <div class="rating-option" data-value="2">2</div>
-                                    <div class="rating-option" data-value="3">3</div>
-                                    <div class="rating-option" data-value="4">4</div>
-                                    <div class="rating-option" data-value="5">5</div>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Predictive modeling</label>
-                                <div class="rating-group">
-                                    <input type="hidden" name="knowledge_predictive">
-                                    <div class="rating-option" data-value="1">1</div>
-                                    <div class="rating-option" data-value="2">2</div>
-                                    <div class="rating-option" data-value="3">3</div>
-                                    <div class="rating-option" data-value="4">4</div>
-                                    <div class="rating-option" data-value="5">5</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Section 3: Learning Expectations -->
-                        <div class="assessment-section">
-                            <h4 class="text-primary mb-4"><i class="bi bi-bullseye"></i> Section 3: Learning Expectations</h4>
-                            <label class="form-label fw-bold">What do you hope to achieve? (Select top 3)</label>
-                            
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="goal[]" value="understand" id="goal1">
-                                <label class="form-check-label" for="goal1">Understand what AI is and how it works</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="goal[]" value="practical" id="goal2">
-                                <label class="form-check-label" for="goal2">See practical AI applications in action</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="goal[]" value="identify" id="goal3">
-                                <label class="form-check-label" for="goal3">Learn to identify AI opportunities in my work</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="goal[]" value="build" id="goal4">
-                                <label class="form-check-label" for="goal4">Build or design AI solutions</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="goal[]" value="implement" id="goal5">
-                                <label class="form-check-label" for="goal5">Understand implementation requirements</label>
-                            </div>
-                        </div>
-
-                        <!-- Section 4: Pain Points -->
-                        <div class="assessment-section">
-                            <h4 class="text-primary mb-4"><i class="bi bi-exclamation-triangle"></i> Section 4: Current Challenges</h4>
-                            <label class="form-label fw-bold">What are your biggest challenges? (Check all that apply)</label>
-                            
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge1" name="challenge[]" value="manual-entry" aria-label="Too much manual data entry">
-                                <label class="form-check-label" for="challenge1">Too much manual data entry</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge2" name="challenge[]" value="analysis" aria-label="Difficulty analyzing large datasets">
-                                <label class="form-check-label" for="challenge2">Difficulty analyzing large datasets</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge3" name="challenge[]" value="repetitive" aria-label="Repetitive, time-consuming tasks">
-                                <label class="form-check-label" for="challenge3">Repetitive, time-consuming tasks</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge4" name="challenge[]" value="insights" aria-label="Slow decision-making due to lack of insights">
-                                <label class="form-check-label" for="challenge4">Slow decision-making due to lack of insights</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge5" name="challenge[]" value="fraud" aria-label="Difficulty detecting fraud or anomalies">
-                                <label class="form-check-label" for="challenge5">Difficulty detecting fraud or anomalies</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="challenge6" name="challenge[]" value="trends" aria-label="Limited visibility into trends">
-                                <label class="form-check-label" for="challenge6">Limited visibility into trends</label>
-                            </div>
-
-                            <div class="mt-4">
-                                <label class="form-label fw-bold">Describe one specific problem AI could help solve:</label>
-                                <textarea class="form-control" name="specific_problem" rows="4" placeholder="Be specific: What task? How much time? What impact?"></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg px-5">
-                                <i class="bi bi-check-circle"></i> Submit Assessment
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

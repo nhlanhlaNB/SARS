@@ -369,7 +369,7 @@ function initializeChatbot() {
             <div class="chatbot-messages" id="chatbotMessages"></div>
             <div class="chatbot-input">
                 <form id="chatbotForm">
-                    <input id="chatbotInput" type="text" placeholder="Ask about schedule, assessments, quizzes..." autocomplete="off" aria-label="Type your question" />
+                    <input id="chatbotInput" type="text" placeholder="Ask about schedule, assessments, or the game..." autocomplete="off" aria-label="Type your question" />
                     <button type="submit" aria-label="Send message"><i class="bi bi-send"></i></button>
                 </form>
             </div>
@@ -388,7 +388,7 @@ function initializeChatbot() {
     const input = widget.querySelector('#chatbotInput');
     const messages = widget.querySelector('#chatbotMessages');
 
-    addChatbotMessage(messages, 'bot', 'Hi! I can help you navigate this SARS AI training site. Ask me about day 1, quizzes, assessments, or course resources.');
+    addChatbotMessage(messages, 'bot', 'Hi! I can answer questions about the full 3-day SARS AI programme, including philosophy, outcomes, schedules, assessments, and certification.');
 
     toggle.addEventListener('click', function() {
         panel.classList.toggle('open');
@@ -434,33 +434,57 @@ function addChatbotMessage(container, sender, text) {
 function getChatbotResponse(message) {
     const text = message.toLowerCase();
 
-    if (text.includes('day 1') || text.includes('schedule') || text.includes('session')) {
-        return 'You can view the full Day 1 programme and session timeline on the Day 1 page. Use the top menu and open session details to see activities.';
+    if (text.includes('philosophy') || text.includes('programme philosophy') || text.includes('approach')) {
+        return 'The programme is an applied, design-led executive intervention. Participants act as technical experts and co-designers to diagnose SARS realities and develop AI-enabled solutions through demos, critique, co-creation, prototyping, pitching, and strategic foresight.';
     }
 
-    if (text.includes('day 2') || text.includes('day 3') || text.includes('coming soon')) {
-        return 'Day 2 and Day 3 schedules are now available. Open them from the navigation menu to view full session details and activities.';
+    if (text.includes('outcome') || text.includes('objectives') || text.includes('what will we achieve')) {
+        return 'Programme outcomes include: validated SARS AI capability view, prioritised pain points, co-created solution ideas, future technology outlook, responsible AI understanding (ethics/security), and clear pilot implementation pathways.';
     }
 
-    if (text.includes('quiz')) {
-        return 'Open the Quizzes page from Resources. You can interact with options and get instant feedback on answers.';
+    if (text.includes('day 1') || (text.includes('schedule') && text.includes('day 1'))) {
+        return 'Day 1 (08:30–16:00) focuses on reality check and alignment: orientation and LuthandoAI intro, AI game, applied AI demos/case studies, hands-on deepfake build session, SARS AI maturity hypothesis review, breakout critique, pain-point prioritisation, team formation, and Day 1 reflection/closing.';
     }
 
-    if (text.includes('assessment') || text.includes('matric meter')) {
-        return 'Go to the Assessments page to complete the baseline Matric Meter assessment. Your responses are saved locally in your browser.';
+    if (text.includes('day 2') || (text.includes('schedule') && text.includes('day 2'))) {
+        return 'Day 2 (08:30–16:00) is co-creation and prototyping: recap/design criteria, AI toolkit briefing, Co-Creation Studio I and II, pitch preparation, solution pitching with peer/panel evaluation, prize awards, and documentation of five solution concepts.';
     }
 
-    if (text.includes('certificate') || text.includes('progress')) {
-        return 'Progress features are available on the site, and certificate generation is a placeholder that can be connected to a backend later.';
+    if (text.includes('day 3') || (text.includes('schedule') && text.includes('day 3')) || text.includes('future readiness')) {
+        return 'Day 3 (08:30–16:00) focuses on institutionalising AI capability: emerging tech in revenue administration, research and sandbox pathways, ethics/explainability/bias/cybersecurity/data governance, pilot pathways, governance ownership, value measurement, and programme synthesis.';
+    }
+
+    if (text.includes('time') || text.includes('duration') || text.includes('delivery mode') || text.includes('face-to-face')) {
+        return 'Delivery mode is face-to-face over 3 days, with daily sessions from 08:30 to 16:00.';
+    }
+
+    if (text.includes('assessment') || text.includes('matric meter') || text.includes('google form') || text.includes('qr')) {
+        return 'Assessments are completed via the external Google Form. Open it from the Resources > Assessments link, or use the QR code on the Assessment page.';
+    }
+
+    if (text.includes('quiz') || text.includes('game')) {
+        return 'Use Resources > Game to open the external Google Form game in a new tab.';
+    }
+
+    if (text.includes('certificate') || text.includes('certification') || text.includes('award')) {
+        return 'Participants who complete the full 3-day programme and actively join co-creation activities receive a Certificate of Completion. Special awards are also given for strong game performance.';
+    }
+
+    if (text.includes('ethics') || text.includes('security') || text.includes('responsible ai') || text.includes('governance') || text.includes('bias')) {
+        return 'Responsible AI is a core programme thread, including ethics, explainability, bias mitigation, cybersecurity risks, data governance, and regulatory compliance, especially in the Day 3 deep dive.';
     }
 
     if (text.includes('resource') || text.includes('case study') || text.includes('implementation')) {
-        return 'Use the Resources menu for assessments, quizzes, case studies, and implementation guidance.';
+        return 'Use the Resources menu for assessments (Google Form), the game, case studies, and implementation guidance.';
     }
 
     if (text.includes('hello') || text.includes('hi') || text.includes('help')) {
-        return 'Hello! Try asking: "Where is Day 1 schedule?", "How do I take the assessment?", or "Where are quizzes?"';
+        return 'Hello! Ask me about programme philosophy, outcomes, Day 1/2/3 schedules, assessment links, or certification.';
     }
 
-    return 'I can help with navigation and course content on this site. Ask me about Day pages, quizzes, assessments, resources, or progress.';
+    if (text.includes('schedule') || text.includes('session') || text.includes('agenda')) {
+        return 'The programme runs over 3 days (08:30–16:00): Day 1 alignment and pain points, Day 2 co-creation and pitching, Day 3 future readiness and responsible AI. Ask for a specific day for more detail.';
+    }
+
+    return 'I can help with the SARS AI programme content and navigation. Ask about philosophy, outcomes, Day 1/2/3 schedules, assessments, resources, or certification.';
 }
