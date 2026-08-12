@@ -387,6 +387,7 @@ function initializeChatbot() {
     const form = widget.querySelector('#chatbotForm');
     const input = widget.querySelector('#chatbotInput');
     const messages = widget.querySelector('#chatbotMessages');
+    let chatHistory = [];
 
     addChatbotMessage(messages, 'bot', 'Hi! I can answer questions about the full 3-day SARS AI programme, including philosophy, outcomes, schedules, assessments, and certification.');
 
@@ -401,7 +402,7 @@ function initializeChatbot() {
         panel.classList.remove('open');
     });
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const userText = input.value.trim();
         if (!userText) {
@@ -409,14 +410,64 @@ function initializeChatbot() {
         }
 
         addChatbotMessage(messages, 'user', userText);
-        const botReply = getChatbotResponse(userText);
-
-        setTimeout(() => {
-            addChatbotMessage(messages, 'bot', botReply);
-        }, 250);
-
         input.value = '';
+
+        const typing = addTypingIndicator(messages);
+
+        let botReply = '';
+        try {
+            botReply = await askAIAssistant(userText, chatHistory);
+        } catch (err) {
+            console.warn('AI assistant unavailable, using local answers:', err);
+        }
+
+        typing.remove();
+
+        if (!botReply || !botReply.trim()) {
+            botReply = getChatbotResponse(userText);
+        }
+
+        chatHistory.push({ role: 'user', content: userText });
+        chatHistory.push({ role: 'assistant', content: botReply });
+        if (chatHistory.length > 12) {
+            chatHistory = chatHistory.slice(-12);
+        }
+
+        addChatbotMessage(messages, 'bot', botReply);
     });
+}
+
+async function askAIAssistant(message, history) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            signal: controller.signal,
+            body: JSON.stringify({ message: message, history: history || [] })
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(data.error || data.message || 'Assistant unavailable.');
+        }
+
+        return data.reply || '';
+    } finally {
+        clearTimeout(timeout);
+    }
+}
+
+function addTypingIndicator(container) {
+    const typing = document.createElement('div');
+    typing.className = 'chatbot-message bot chatbot-typing';
+    typing.innerHTML = '<span><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></span>';
+    container.appendChild(typing);
+    container.scrollTop = container.scrollHeight;
+    return typing;
 }
 
 function addChatbotMessage(container, sender, text) {
